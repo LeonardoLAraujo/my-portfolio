@@ -3,7 +3,6 @@ import ViteExpress from "vite-express";
 import cors from "cors";
 import dotenv from "dotenv";
 import admin from "firebase-admin";
-import fs from "fs";
 import dns from "dns";
 
 dotenv.config();
