@@ -31,9 +31,11 @@ async function checkDomainExists(email: string): Promise<boolean> {
 }
 
 // Inicializar Firebase Admin
-const serviceAccount = JSON.parse(
-    fs.readFileSync("./src/server/portfolio-4590b-firebase-adminsdk-fbsvc-5f6f19bff0.json", "utf8")
-);
+if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
+    throw new Error("Variável de ambiente FIREBASE_SERVICE_ACCOUNT não definida!");
+}
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
