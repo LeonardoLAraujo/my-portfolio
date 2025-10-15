@@ -65,7 +65,8 @@ app.post("/contact", async (request: any, response: any) => {
 
         return response.json({ success: true, message: "Mensagem enviada com sucesso!" });
     }catch(error){
-        console.log(`Error send Contact: ${error}`);
+        console.error("Error send Contact:", error);
+        return response.status(500).json({ success: false, message: "Erro no servidor." });
     }
 });
 
