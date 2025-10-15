@@ -9,13 +9,25 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== "POST") return res.status(405).json({ success: false, message: "Erro ao Enviar os Dados"});
+    try {
+        if (req.method !== "POST") {
+            return res.status(405).json({ success: false, message: "Método não permitido" });
+        }
 
-    const { name, email, message } = req.body;
+        const { name, email, message } = req.body;
 
-    if (!name || !email || !message) return res.status(400).json({ success: false, message: "Algum campo está vázio"});
+        if (!name || !email || !message) {
+            return res.status(400).json({ success: false, message: "Algum campo está vazio" });
+        }
 
-    await db.collection("contatos").add({ name, email, message, criadoEm: new Date() });
+        // Aqui você pode adicionar validação de email e domínio se quiser
+        // await checkDomainExists(email)
 
-    return res.status(200).json({ success: true, message: "Mensagem enviada com sucesso!" });
+        await db.collection("contatos").add({ name, email, message, criadoEm: new Date() });
+
+        return res.status(200).json({ success: true, message: "Mensagem enviada com sucesso!" });
+    } catch (error: any) {
+        console.error("Erro no envio do contato:", error);
+        return res.status(500).json({ success: false, message: "Erro no servidor" });
+    }
 }
