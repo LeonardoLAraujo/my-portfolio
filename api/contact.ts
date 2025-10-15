@@ -1,27 +1,30 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
-import admin from "firebase-admin";
+// api/contact.js
+const admin = require("firebase-admin");
 
 if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT!);
-  admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+    if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
+        throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not set");
+    }
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT as string);
+    admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 }
 
 const db = admin.firestore();
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") 
-    return res.status(405).json({ success: false, message: "Método não permitido" });
+module.exports = async (req: any, res: any) => {
+    if (req.method !== "POST") 
+        return res.status(405).json({ success: false, message: "Método não permitido" });
 
-  const { name, email, message } = req.body;
+    const { name, email, message } = req.body;
 
-  if (!name || !email || !message) 
-    return res.status(400).json({ success: false, message: "Algum campo está vazio" });
+    if (!name || !email || !message) 
+        return res.status(400).json({ success: false, message: "Algum campo está vazio" });
 
-  try {
-    await db.collection("contatos").add({ name, email, message, criadoEm: new Date() });
-    return res.status(200).json({ success: true, message: "Mensagem enviada com sucesso!" });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ success: false, message: "Erro no servidor" });
-  }
-}
+    try {
+        await db.collection("contatos").add({ name, email, message, criadoEm: new Date() });
+        return res.status(200).json({ success: true, message: "Mensagem enviada com sucesso!" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: "Erro no servidor" });
+    }
+};
