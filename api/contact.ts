@@ -11,7 +11,7 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
-module.exports = async (req: any, res: any) => {
+module.exports = async function (req, res) {
     if (req.method !== "POST") 
         return res.status(405).json({ success: false, message: "Método não permitido" });
 
