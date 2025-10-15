@@ -8,7 +8,14 @@ export class Contact {
             body: JSON.stringify({ name, email, message })
         });
 
-        const response = await request.json();
+        let response;
+
+        try {
+            response = await request.json();
+        } catch (err) {
+            console.error("Erro ao parsear JSON:", await request.text());
+            return;
+        }
 
         return response;
     }
