@@ -1,0 +1,8 @@
+:root{
+    --gray: rgb(31 41 55 / 0.95);
+    --gray-dark: #111827;
+    --border-color: rgb(55 65 81 / 0.5);
+    --green: #5eead4;
+    --green-dark: #10917d;
+    --color-text: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}

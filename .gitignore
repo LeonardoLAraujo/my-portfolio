@@ -1,0 +1,50 @@
+# ===========================
+# Logs
+# ===========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===========================
+# Node Modules & Build
+# ===========================
+node_modules
+dist
+dist-ssr
+*.local
+
+# ===========================
+# Firebase
+# ===========================
+# Ignora a chave privada do Firebase
+/src/server/portfolio-4590b-firebase-adminsdk-*.json
+
+# ===========================
+# Editor directories and files
+# ===========================
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ===========================
+# Environment files
+# ===========================
+.env
+.env.local
+.env.*.local
+
+# ===========================
+# OS generated files
+# ===========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini

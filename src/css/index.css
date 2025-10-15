@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: var(--gray-dark);
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+*::-webkit-scrollbar{
+    background-color: var(--gray);
+    color: #fff;
+    width: 13px;
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: var(--green-dark);
+    border-radius: 4px;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon -w src/server -x tsx src/server/main.ts",
+    "start": "cross-env NODE_ENV=production tsx src/server/main.ts",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.2",
+    "nodemon": "^3.1.10",
+    "vite": "^6.3.3"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.2.3",
+    "ecv-component": "^0.0.19",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.5.0",
+    "lit": "^3.3.1",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vite-express": "*"
+  }
+}
