@@ -1,11 +1,13 @@
-// api/contact.js
 const admin = require("firebase-admin");
 
 if (!admin.apps.length) {
     if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
         throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not set");
     }
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    // Corrige os \n do private_key
+    const serviceAccount = JSON.parse(
+        process.env.FIREBASE_SERVICE_ACCOUNT.replace(/\\n/g, "\n")
+    );
     admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 }
 
