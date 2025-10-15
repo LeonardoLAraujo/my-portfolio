@@ -124,7 +124,7 @@ export const DATA_PROJECT: Project[] = [
             {label: "Vite", backgroundColor: "rgb(202 138 4 / 0.2)", color: "rgb(250 204 21 / var(--tw-text-opacity, 1))"},
             {label: "FireBase", backgroundColor: "rgb(75 85 99 / 0.2)", color: "rgb(156 163 175 / var(--tw-text-opacity, 1))"},
         ],
-        sourceDemo: "https://figthers-in-vila.vercel.app/",
-        sourceGit: "https://github.com/LeonardoLAraujo/FIGTHERS-IN-VILA",
+        sourceDemo: "https://portfolio-leonardo-leal.vercel.app/",
+        sourceGit: "https://github.com/LeonardoLAraujo/my-portfolio",
     },
 ];

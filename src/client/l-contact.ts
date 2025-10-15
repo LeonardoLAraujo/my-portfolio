@@ -184,7 +184,7 @@ export default class LContact extends LitElement{
     private async _sendContact(e: MouseEvent): Promise<void> {  
         e.preventDefault();
 
-        this._lLoading.show();
+        //this._lLoading.show();
 
         if(this._inputName.value.trim() == "" || this._inputEmail.value.trim() == "" || this._textAreaMessage.value.trim() == ""){
             this._responseData = {success: false, message: "Existe Campos Vázios"};
